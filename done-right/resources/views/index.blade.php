@@ -3,7 +3,7 @@
 @section('title', 'Done Right✅')
 @section('content')
     <h1>
-        The task list!
+        Tasks!
     </h1>
 
     <div>
