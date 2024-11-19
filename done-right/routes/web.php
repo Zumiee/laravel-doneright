@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 
 class Task
@@ -21,7 +22,7 @@ $tasks = [
     1,
     'Buy groceries',
     'Task 1 description',
-    'Task 1 eto na kase yung pinaka descriptive sa task na ito, sana malaman mong mahal na mahal kita, labyuu! hart hart!',
+    'Task 1 long description',
     false,
     '2023-03-01 12:00:00',
     '2023-03-01 12:00:00'
@@ -55,14 +56,25 @@ $tasks = [
   ),
 ];
 
-Route::get('/', function () use($tasks) {
+
+Route::get('/', function () {
+    return redirect()->route('tasks.index');
+});
+
+Route::get('/tasks', function () use($tasks) {
     return view('index', [
         'tasks' => $tasks
     ]);
 })->name('tasks.index');
 
-Route::get('/{id}', function ($id) {
-    return "One single task!";
+Route::get('/tasks/{id}', function ($id) use ($tasks) {
+    $task = collect($tasks)->firstWhere('id', $id);
+
+    if (!$task) {
+        abort(Response::HTTP_NOT_FOUND);
+    }
+
+    return view('show', ['task' => $task]);
 })->name('tasks.show');
 
 // Route::get('/hello', function () {
