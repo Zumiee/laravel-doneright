@@ -8,6 +8,7 @@
             {{-- <a href="{{ route('tasks.show', ['id', ]) }}"></a> --}}
             <a href="{{ route('tasks.show', ['id' => $task->id]) }}">{{ $task->title }}</a>
             <div>Description: {{ $task->description }}</div>
+            <div>{{ $task->long_description }}</div>
         </div>
     @empty
         <div>There are no tasks!</div>

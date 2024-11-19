@@ -21,7 +21,7 @@ $tasks = [
     1,
     'Buy groceries',
     'Task 1 description',
-    'Task 1 long description',
+    'Task 1 eto na kase yung pinaka descriptive sa task na ito, sana malaman mong mahal na mahal kita, labyuu! hart hart!',
     false,
     '2023-03-01 12:00:00',
     '2023-03-01 12:00:00'
